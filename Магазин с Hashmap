@@ -1,0 +1,38 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Shop {
+public static void main(String[] args) {
+
+    Map<String, Double> magazin = new HashMap<>();
+    magazin.put("хляб", 1.80);
+    magazin.put("кашкавал", 2.30);
+    magazin.put("сирене", 7.80);
+    magazin.put("кайма", 6.10);
+    magazin.put("вода", 1.10);
+
+    Scanner scanner = new Scanner(System.in);
+    double obshtaSuma = 0;
+
+    System.out.print("Колко продукта искаш? ");
+    int broi = scanner.nextInt();
+    scanner.nextLine();
+
+    for (int i = 0; i < broi; i++) {
+        System.out.print("Продукт " + (i + 1) + ": ");
+        String produkt = scanner.nextLine().toLowerCase();
+
+        if (magazin.containsKey(produkt)) {
+            double cena = magazin.get(produkt);
+            System.out.println("Цена: " + cena + " лв.");
+            obshtaSuma += cena;
+        } else {
+            System.out.println("Нямаме такъв продукт");
+        }
+    }
+
+    System.out.println("Обща сума: " + obshtaSuma + " лв.");
+
+    scanner.close();
+}
