@@ -1,0 +1,96 @@
+import java.util.*;
+
+public class Uchenici2 {
+    public static void main(String[] args) {
+
+        HashMap<Integer, String> students = new HashMap<>();
+        Scanner sc = new Scanner(System.in);
+
+        students.put(1,"Александър");
+        students.put(2,"Борислав");
+        students.put(3,"Виктор");
+        students.put(4,"Георги Раленеков");
+        students.put(5,"Георги Георгиев");
+        students.put(6,"Давид");
+        students.put(7,"Данаил");
+        students.put(8,"Даная");
+        students.put(9,"Даниел");
+        students.put(10,"Деница");
+        students.put(11,"Диан");
+        students.put(12,"Димитър Димов");
+        students.put(13,"Димитър Авджиев");
+        students.put(14,"Ивайло");
+        students.put(15,"Иван Кардашлиев");
+        students.put(16,"Иван Христов");
+        students.put(17,"Йордан");
+        students.put(18,"Калин");
+        students.put(19,"Мария");
+        students.put(20,"Нешо");
+
+        int choice = 0;
+
+        while (choice != 5) {
+
+            System.out.println("\n--- МЕНЮ ---");
+            System.out.println("1 - Търси ученик");
+            System.out.println("2 - Добави ученик");
+            System.out.println("3 - Изтрий ученик");
+            System.out.println("4 - Покажи всички");
+            System.out.println("5 - Изход");
+            System.out.print("Избор: ");
+
+            choice = sc.nextInt();
+
+            if (choice == 1) {
+
+                System.out.print("Номер: ");
+                int num = sc.nextInt();
+
+                if (students.containsKey(num)) {
+                    System.out.println("Ученик: " + students.get(num));
+                } else {
+                    System.out.println("Няма такъв ученик.");
+                }
+
+            } else if (choice == 2) {
+
+                System.out.print("Нов номер: ");
+                int id = sc.nextInt();
+                sc.nextLine();
+
+                System.out.print("Име: ");
+                String name = sc.nextLine();
+
+                students.put(id, name);
+                System.out.println("Добавен успешно.");
+
+            } else if (choice == 3) {
+
+                System.out.print("Номер за изтриване: ");
+                int id = sc.nextInt();
+
+                if (students.containsKey(id)) {
+                    students.remove(id);
+                    System.out.println("Ученикът е изтрит.");
+                } else {
+                    System.out.println("Няма такъв номер.");
+                }
+
+            } else if (choice == 4) {
+
+                System.out.println("\n--- СПИСЪК ---");
+
+                TreeMap<Integer,String> sorted = new TreeMap<>(students);
+
+                for (Integer key : sorted.keySet()) {
+                    System.out.println(key + " -> " + sorted.get(key));
+                }
+
+            } else if (choice != 5) {
+                System.out.println("Невалиден избор.");
+            }
+        }
+
+        System.out.println("Програмата приключи.");
+    }
+}
